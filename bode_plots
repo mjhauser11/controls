@@ -1,0 +1,13 @@
+from sympy.abc import s, p, a
+from sympy.physics.control.lti import TransferFunction as TF
+tf1 = TF(16*s, 8.8e-8*s**2+16*s+1,s)
+tf1
+from sympy.physics.control.control_plots import pole_zero_plot as pzp
+pzp(tf1)
+from sympy.physics.control.control_plots import bode_plot as bode
+bode(tf1, initial_exp=-20, final_exp=20,freq_unit='Hz')
+tf2 = TF(300e3*(1+33*s), (1+33*s)*(300+33.3*s),s)
+tf2
+pzp(tf2)
+bode(tf2, freq_unit='Hz')
+tf1.poles()
